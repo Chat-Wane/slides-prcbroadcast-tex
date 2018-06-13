@@ -1,0 +1,354 @@
+\pdfpageattr {/Group << /S /Transparency /I true /CS /DeviceRGB>>}
+\documentclass[10pt, xcolor={usenames, dvipsnames}]{beamer}
+
+\usepackage[french, english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{upgreek,textgreek}
+\usepackage{animate}
+
+\usepackage{fnpct}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[style=alphabetic, autocite=inline, firstinits=true, maxnames=2]{biblatex}
+\bibliography{bibliographie}
+%\renewcommand*{\bibfont}{\small}
+
+\usepackage{makecell}
+\usepackage{tabularx, booktabs}
+\usepackage{tikz}
+\definecolor{light-gray}{gray}{0.65}
+\tikzset{fade on/.code={\only<#1>{\color{light-gray}}}}
+\tikzset{hide on/.code={\only<#1>{\color{white}}}}
+\tikzset{bold on/.code={\only<#1>{\bfseries}}}
+\tikzset{
+  opinvisible/.style={opacity=0.2},
+  visible on/.style={alt={#1{}{opinvisible}}},
+  alt/.code args={<#1>#2#3}{%
+    \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+  },
+}
+
+\usetikzlibrary{plotmarks,shapes}
+\usepackage{colortbl}
+\usepackage{ulem}
+\usepackage{multicol}
+\usepackage[overlay]{textpos}
+\usepackage{multirow}
+\usepackage{ragged2e}
+\usepackage{rotating}
+\usepackage{fancybox}
+\usepackage{ulem}
+\usepackage{overpic}
+\usepackage{enumerate}
+\usepackage{xfrac}
+\usepackage{pgfplots}
+
+\usepackage{transparent}
+
+\usepackage{epstopdf}
+\usepackage{epsfig}
+
+
+\newcommand{\REF}{\textcolor{purple}{REF}}
+\newcommand{\GO}[1]{\textcolor{blue}{#1}}
+\newcommand{\YES}[1]{\textcolor{green}{#1}}
+\newcommand{\NO}[1]{\textcolor{red}{#1}}
+
+\usetheme{metropolis}
+
+\title{The Last Monotonic Bound\\of Causal Broadcast}
+\author{Brice N\'edelec, Pascal Molli, and Achour Most{\'e}faoui}
+\date{2018}
+\institute{University of Nantes, LS2N}
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Introduction}
+
+  Causal broadcast is the core of many distributed applications such as
+  distributed social networks, distributed collaborative softwares, or
+  distributed data stores.
+
+  \vspace{3em}
+  
+    \begin{minipage}{0.19\textwidth}
+      \centering
+      \includegraphics[width=0.7\textwidth]{logos/facebook.png}
+    \end{minipage}
+    \begin{minipage}{0.19\textwidth}
+      \centering
+      \includegraphics[width=0.7\textwidth]{logos/mastodon.png}
+    \end{minipage}
+    \begin{minipage}{0.19\textwidth}
+      \centering
+      \includegraphics[width=0.7\textwidth]{logos/telegram.png}
+    \end{minipage}    
+    \begin{minipage}{0.19\textwidth}
+      \centering
+      \includegraphics[width=0.7\textwidth]{logos/google.png}
+    \end{minipage}
+    \begin{minipage}{0.19\textwidth}
+      \centering
+      \includegraphics[width=0.8\textwidth]{logos/riak.png}
+    \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}{Causal broadcast is a reliable broadcast}
+
+  \begin{definition}[Uniform reliable broadcast] 
+    When a process~A broadcasts a message to all processes of its system $b_A(m)$,
+    each correct process~B eventually receives it and delivers it
+    $d_B(m)$. Uniform reliable broadcast guarantees 3 properties:
+    \begin{itemize}
+    \item Validity: If a correct process broadcasts a message, then it
+      eventually delivers it.
+    \item Uniform Agreement: If a process -- correct or not -- delivers a message,
+      then all correct processes eventually deliver it.
+    \item Uniform Integrity: A process delivers a message at most once, and only if
+      it was previously broadcast.
+    \end{itemize}
+  \end{definition}
+  
+  \vspace{2em}
+
+  Reliable broadcast forbids multiple delivery.
+    
+\end{frame}
+
+
+\begin{frame}{Non-monotonic link-wise memory}
+
+  \begin{definition}[\label{def:memory}Link memory]
+    A link from Process~A to Process~B remembers among Process~B's delivered
+    messages those that will be received from Process~A; and forgets among
+    Process~B's delivered messages those that will never be received from
+    Process~A.\\
+    $\forall m,\, remember_{BA}(m) \equiv d_B(m) \wedge \neg r_{BA}(m)$ \\
+    $\forall m,\, remember_{BA}(m) \implies r_{BA}(m)$
+  \end{definition}
+
+  \vspace{2em}
+
+  \begin{theorem}[Link memory forbids multiple delivery]
+    Assuming that each link conveys each message at most once, link memory is
+    sufficient to forbid multiple delivery.
+  \end{theorem}
+
+\end{frame}
+
+
+\begin{frame}{Large scale static systems: \YES{\cmark}}
+  
+  reliable links + forwarding + link memory = reliable broadcast
+
+  \begin{minipage}{0.24\textwidth}
+    \centering
+    \input{input/figmemorylinkA.tex}    
+  \end{minipage}
+  \begin{minipage}{0.24\textwidth}
+    \vspace{11pt}
+    \centering
+    \input{input/figmemorylinkB.tex}    
+  \end{minipage}
+  \begin{minipage}{0.24\textwidth}
+    \vspace{11pt}
+    \centering
+    \input{input/figmemorylinkC.tex}    
+  \end{minipage}
+  \begin{minipage}{0.24\textwidth}
+    \vspace{1pt}
+    \centering
+    \input{input/figmemorylinkD.tex}
+  \end{minipage}
+
+  \vspace{2em}
+
+  Link memory allows processes to safely remove obsolete control information
+  about past deliveries in static systems.
+  
+  The space complexity is non-monotonic.
+
+\end{frame}
+
+\begin{frame}{Dynamic systems: \NO{\xmark}}
+  
+  \begin{minipage}{0.24\textwidth}
+    \centering
+    \input{input/figmemorylinkfailsA.tex}    
+  \end{minipage}
+  \begin{minipage}{0.24\textwidth}
+    \centering
+    \input{input/figmemorylinkfailsB.tex}    
+  \end{minipage}
+  \begin{minipage}{0.24\textwidth}
+    \centering
+    \input{input/figmemorylinkfailsC.tex}    
+  \end{minipage}
+  \begin{minipage}{0.24\textwidth}
+    \centering
+    \input{input/figmemorylinkfailsD.tex}
+  \end{minipage}
+  
+  \vspace{2em}
+
+  Adding a link adds uncertainty. Process~C does not know messages it should
+  expect from Process~B. It mistakes the message $a$ for a new one.
+
+  Not only it delivers $a$ multiple times, but this has cascading effects over
+  the whole system.
+
+\end{frame}
+
+\begin{frame}[standout]
+  
+  How do we keep a non-monotonic bound on space complexity without forfeiting on
+  dynamic systems where processes can join, leave, or self-reconfigure at any
+  time?
+
+\end{frame}
+
+
+\begin{frame}{We will use causal order}
+
+  Causal broadcast ensures a specific ordering among message deliveries.
+  
+  \begin{definition}[Lamport's Happen before]
+    Happen before is a transitive, irreflexive, and antisymmetric relation
+    $\rightarrow$ that defines a strict partial orders of events.  The sending
+    of a message always precedes its receipt.
+  \end{definition}
+
+  \vspace{2em}
+
+  \begin{definition}[Causal order]
+    The delivery order of messages follows the happen before relationships of the
+    corresponding broadcasts. $\forall A,\,B,\,C,\,
+    b_A(m) \rightarrow b_B(m') \implies d_C(m) \rightarrow d_C(m')$
+  \end{definition}
+
+  \textit{When Alice comments Bob's picture, nobody sees Alice's comment without
+    Bob's picture, and nobody sees multiple occurrences of Alice's comment or
+    Bob's picture.}
+
+\end{frame}
+
+\begin{frame}{Proposal: PRC-broadcast}
+
+  PRC-broadcast stands for Preventive Reliable Causal broadcast. 
+  
+  \vspace{2em}
+
+  By exploiting causal order, processes remove the uncertainty associated with
+  link additions. Causal order allows to remove batches of obsolete information
+  while reasoning about temporarily buffered broadcast messages.
+  
+  \vspace{1em}
+  
+  Causal broadcast improves its underlying reliable broadcast.
+
+\end{frame}
+
+\begin{frame}{Link memory initialization}
+
+  \begin{center}
+    \input{input/figtimelineproof.tex}
+  \end{center}
+
+  \vspace{-1em}
+
+  \begin{minipage}{0.325\textwidth}
+    \setbeamercolor{block title}{use=structure,fg=black,bg=green!20}
+    \setbeamercolor{block body}{use=structure,fg=black,bg=green!10}
+    \begin{block}{Lemma (Buffer $B_\alpha$)}
+      $B_\alpha$ contains $\mathcal{A}_2$ and $\mathcal{B}_2$.
+    \end{block}
+  \end{minipage}
+  \begin{minipage}{0.325\textwidth}
+    \setbeamercolor{block title}{use=structure,fg=black,bg=blue!20}
+    \setbeamercolor{block body}{use=structure,fg=black,bg=blue!10}
+    \begin{block}{Lemma (Buffer $B_\beta$)}
+      $B_\beta$ contains $\mathcal{B}_2$ and $\mathcal{A}_3$.
+    \end{block}
+  \end{minipage}
+  \begin{minipage}{0.325\textwidth}
+    \setbeamercolor{block title}{use=structure,fg=black,bg=purple!20}
+    \setbeamercolor{block body}{use=structure,fg=black,bg=purple!10}
+    \begin{block}{Lemma (Buffer $B_\pi$)}
+      $B_\pi$ contains $\mathcal{A'}_3$ and $\mathcal{B}_3$ with 
+      $\mathcal{A}'_3 \subseteq \mathcal{A}_3$.
+    \end{block}
+  \end{minipage}
+  
+  \setbeamercolor{block title}{use=structure,fg=black,bg=yellow!20}
+  \setbeamercolor{block body}{use=structure,fg=black,bg=yellow!10}
+  \begin{block}{Lemma $B_\alpha$, $B_\beta$, $B_\pi$ initialize link memory}
+    The memory of a new link becomes correct at receipt of $B_\beta$. \\
+    To deliver:
+    $B_\beta \setminus B_\alpha \setminus B_\pi = (\mathcal{B}_2 \cup
+    \mathcal{A}_3) \setminus (\mathcal{A}_2 \cup \mathcal{B}_2) \setminus
+    (\mathcal{A}_3' \cup \mathcal{B}_3) = \mathcal{A}_3 \setminus
+    \mathcal{A}_3'$\\
+    To expect:
+    $B_\pi \setminus B_\beta = (\mathcal{A}_3' \cup \mathcal{B}_3) \setminus
+    (\mathcal{B}_2 \cup \mathcal{A}_3) = \mathcal{B}_3$
+
+  \end{block}   
+    
+\end{frame}
+
+\begin{frame}{Complexity}
+
+  \begin{table}
+    \begin{center}
+      \caption{\label{table:complexity} Complexity of broadcast algorithms at
+        each process. $N$ the number of processes that ever broadcast a
+        message. $P$ the number of processes in the system. $W$ the number of
+        messages received but not delivered yet. $Q_i$ is the number of incoming
+        communication means. $M$ is the number of messages already delivered
+        that should be received again from at least one process in $Q_i$.}
+      \input{input/tablecomplexity.tex}
+    \end{center}
+  \end{table}
+
+\end{frame}
+
+\begin{frame}{Experiments: Advantageous tradeoff in space overhead}
+
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{img/overhead.eps}
+  \end{center}
+
+\end{frame}
+
+\begin{frame}{Experiments: Small traffic overhead}
+  \begin{center}
+    \includegraphics[width=0.8\textwidth]{img/controlmessages.eps}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}{Conclusion}
+\end{frame}
+
+\begin{frame}[standout]
+  To be continued\ldots Retrieving partial order out of flattened orders.
+\end{frame}
+
+
+\end{document}
