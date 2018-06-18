@@ -1,0 +1,43 @@
+
+\begin{tikzpicture}[scale=0.88]
+
+  \small
+  
+  \newcommand\X{180/5pt};
+  \newcommand\Y{30pt};
+  
+  \newcommand\RADX{3.5};
+  \newcommand\RADY{2};
+
+  \newcommand\OFFX{15pt};
+
+  \draw[pattern=north west lines, pattern color=blue!30] (0*\X, 0pt) circle [x radius=\RADX*\X, y radius = \RADY*\Y];
+  \draw[pattern=north east lines, pattern color=red!35] (\RADX*\X, 0pt) circle [x radius=\RADX*\X, y radius = \RADY*\Y];
+
+  \draw (0*\X, 0pt) circle [x radius=\RADX*\X, y radius = \RADY*\Y];
+  \draw (0*\X, \RADY*\Y) node[below, align=center]{\textbf{\uline{Delivered by}}\\\textbf{\uline{Process~B}}};
+
+  \draw (\OFFX-\RADX*\X, 0pt) node[right, align=left] {
+    \textbf{To deliver:}\\%\tiny
+    $B_\beta \setminus B_\alpha \setminus B_\pi$\\\tiny
+    $[c_1,\,b_1,\,b_2,\,c_2]\setminus\{c_1,\,c_2\}\setminus\{b_1,\,c_3\}$\\\tiny
+    $[b_1,\,b_2] \setminus \{b_1,\,c_3\}$\\%\tiny
+    $\bm{[b_2]}$
+  };
+  \draw (-\OFFX+2*\RADX*\X, 0pt) node[left, align=right] {
+    \textbf{To expect from B:}\\%\tiny
+    $B_\pi \setminus B_\beta$\\\tiny
+    $\{b_1,\,c_3\} \setminus [c_1,\,b_1,\,b_2,\,c_2]$\\\tiny
+    \\
+    $\bm{\{c_3\}}$
+  };
+  \draw (0.5*\RADX*\X, 0pt) node[align=center] {
+    \textbf{To ignore:}\\%\tiny
+    $B_\beta \wedge (B_\alpha \cup B_\pi)$\\\tiny
+    $[c_1,\,b_1,\,b_2,\,c_2] \wedge (\{c_1,\,c_2\} \cup \{ b_1,\,c_3\})$\\\tiny
+    $[c_1,\,b_1,\,b_2,\, c_2] \wedge \{b_1,\, c_1,\, c_2,\, c_3 \}$\\%\tiny
+    $\bm{\{c_1,\, b_1,\, c_2 \}}$
+  };
+  \draw (\RADX*\X, 0pt) circle [x radius=\RADX*\X, y radius = \RADY*\Y];
+  \draw (\RADX*\X, \RADY*\Y) node[below, align=center]{\textbf{\uline{Delivered by}}\\\textbf{\uline{Process~C}}};
+\end{tikzpicture}

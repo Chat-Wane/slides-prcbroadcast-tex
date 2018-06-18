@@ -1,14 +1,14 @@
 
 \setlength{\tabcolsep}{4pt} % General space between cols (6pt standard)
 
-\small
+\scriptsize
 
 \begin{tabularx}{0.98\columnwidth}{@{}Xcccc@{}}
   & \makecell{message\\overhead} &  \makecell{delivery\\execution time} & \makecell{local space\\consumption} & \makecell{\# control messages\\per added link} \\ \cmidrule{2-5}
   vector-based R-broadcast & $O(1)$ & $O(1)$ & $O(\NO{N})$ & $0$ \\
   vector-based C-broadcast & $O(\NO{N})$ & $O(W.\NO{N})$ & $O(\NO{N}+W.\NO{N})$ & $0$ \\ 
-  \footnotesize{PC-broadcast} & $O(1)$ & $O(1)$ & $O(\NO{N})$ & $3$ to \NO{$2P^2$} \\ \hline\hline
-  \scriptsize{PRC-broadcast} & $O(1)$ & $O(Q_i)$ & $\mathbf{O(Q_i.M)}$ & $\mathbf{6}$ to $\NO{\mathbf{4P^2}}$ \\
+  PC-broadcast & $O(1)$ & $O(1)$ & $O(\NO{N})$ & $3$ to \NO{$2P^2$} \\ \hline\hline
+  PRC-broadcast & $O(1)$ & $O(Q_i)$ & $\mathbf{O(Q_i.M)}$ & $\mathbf{6}$ to $\NO{\mathbf{4P^2}}$ \\
 %  \bottomrule
 \end{tabularx}
 
