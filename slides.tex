@@ -418,12 +418,10 @@
   establishement. Random peer-sampling protocol. Very dynamic.
   
   Bidirectional links. Link memory initialized and maintained both ways.
-  
-  
-
+    
 \end{frame}
 
-\begin{frame}{Experiments: Advantageous tradeoff in space overhead}
+\begin{frame}{Experiments: Original tradeoff in space overhead}
 
   \begin{center}
     \includegraphics[width=0.8\textwidth]{img/overhead.eps}
@@ -439,6 +437,26 @@
 
 
 \begin{frame}{Conclusion}
+
+  PRC-broadcast is an original implementation of causal broadcast that provides
+  an original tradeoff on complexity.
+  
+  \vspace{2em}
+
+  Space complexity is non-monotonic and actually depends on the system
+  settings and its usage.
+
+  \vspace{1em}
+
+  Assuming light routing capabilities, message overhead remains small. It
+  constitutes an advantageous tradeoff compared to vector-based approaches that
+  continuously pay the price of past delivered messages.
+
+  \vspace{1em}
+
+  This implementation of causal broadcast even makes an efficient implementation
+  for reliable broadcast.
+
 \end{frame}
 
 \begin{frame}[standout]
