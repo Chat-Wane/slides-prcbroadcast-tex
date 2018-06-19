@@ -140,7 +140,7 @@
 \end{frame}
 
 
-\begin{frame}{Non-monotonic link-wise memory}
+\begin{frame}{We define non-monotonic link-wise memory}
 
   \begin{definition}[Link memory]
     A link from Process~A to Process~B remembers among Process~B's delivered
@@ -163,7 +163,9 @@
 
 \begin{frame}{Large scale static systems: \YES{\cmark}}
   
-  reliable links + forwarding + link memory = reliable broadcast
+  reliable links + forwarding + link memory = reliable broadcast\\
+  \textit{(Note for later: + FIFO links = causal broadcast)}
+
 
   \begin{minipage}{0.24\textwidth}
     \centering
@@ -421,7 +423,7 @@
     
 \end{frame}
 
-\begin{frame}{Experiments: Original tradeoff in space overhead}
+\begin{frame}{Experiments: original tradeoff in space overhead}
 
   \begin{center}
     \includegraphics[width=0.8\textwidth]{img/overhead.eps}
@@ -429,7 +431,7 @@
 
 \end{frame}
 
-\begin{frame}{Experiments: Small traffic overhead}
+\begin{frame}{Experiments: small traffic overhead}
   \begin{center}
     \includegraphics[width=0.8\textwidth]{img/controlmessages.eps}
   \end{center}
