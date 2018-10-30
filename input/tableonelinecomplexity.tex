@@ -1,0 +1,15 @@
+
+% \setlength{\tabcolsep}{4pt} % General space between cols (6pt standard)
+
+%\scriptsize
+
+\begin{tabularx}{0.90\columnwidth}{@{}cccc@{}}
+  \makecell{message\\overhead} &  \makecell{delivery\\execution time} & \makecell{local space\\consumption} & \makecell{\# control messages\\per added link} \\ \hline
+  $O(1)$ & $O(Q_i)$ & $\mathbf{O(Q_i.M)}$ & $\mathbf{6}$ to $\NO{\mathbf{4P^2}}$ \\
+%  \bottomrule
+\end{tabularx}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../paper"
+%%% End:

@@ -7,6 +7,7 @@
 \usepackage{upgreek,textgreek}
 \usepackage{animate}
 
+\usepackage{fontawesome}
 
 \usepackage{changepage}
 
@@ -74,10 +75,22 @@
 
 \usetheme{metropolis}
 
-\title{The Last Monotonic Bound of Causal Broadcast}
+\title{Causal Broadcast: How to Forget?}
 \author{Brice N\'edelec, Pascal Molli, and Achour Most{\'e}faoui}
-\date{2018}
-\institute{University of Nantes, LS2N}
+\date{OPODIS'18, Hong Kong, December 17--19.}
+\institute{
+  \vspace{6em}
+  \begin{center}
+    \begin{minipage}{0.48\textwidth}
+      \centering
+      \includegraphics[width=0.5\textwidth]{logos/nantes.png}
+    \end{minipage}
+    \begin{minipage}{0.48\textwidth}
+      \centering
+      \includegraphics[width=0.3\textwidth]{logos/ls2n.jpg}
+    \end{minipage}
+  \end{center}
+}
 
 
 
@@ -114,10 +127,49 @@
       \includegraphics[width=0.8\textwidth]{logos/riak.png}
     \end{minipage}
 
+    \vspace{4em}  
+
+    \textit{\textbf{What if\ldots} I want to develop fully decentralized
+      applications?\ldots}
+
+\end{frame}
+
+
+\begin{frame}{Causal broadcast ensures causal order}
+
+  Causal broadcast is a \textbf{reliable broadcast} that ensures a
+  \textbf{specific ordering} among message deliveries.
+  
+  \vspace{1em}
+
+  \begin{definition}[Causal order]
+    The delivery order of messages follows the Lamport's happen before relationships
+    $\rightarrow$ of the corresponding broadcasts.
+    $\forall A,\,B,\,C,\, b_A(m) \rightarrow b_B(m') \implies d_C(m) \rightarrow
+    d_C(m')$
+  \end{definition}
+  
+  \begin{minipage}{0.49\textwidth}
+    \begin{center}
+      \input{input/figtimelineA.tex}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \begin{center}
+      \input{input/figtimelineB.tex}
+    \end{center}
+  \end{minipage}
+
+
 \end{frame}
 
 
 \begin{frame}{Causal broadcast is a reliable broadcast}
+
+  Causal broadcast is a \textbf{reliable broadcast} that ensures a
+  \textbf{specific ordering} among message deliveries.
+  
+  \vspace{1em}
 
   \begin{definition}[Uniform reliable broadcast] 
     When a process~A broadcasts a message to all processes of its system $b_A(m)$,
@@ -133,22 +185,41 @@
     \end{itemize}
   \end{definition}
   
-  \vspace{2em}
+  \vspace{1em}
 
   Reliable broadcast forbids multiple delivery.
-    
+  
+\end{frame}
+
+\begin{frame}[standout]
+  
+  How to implement an efficient causal broadcast when they rely on reliable
+  broadcast implementations that do not scale in large and dynamic systems?
+  
 \end{frame}
 
 
-\begin{frame}{We define non-monotonic link-wise memory}
+\begin{frame}{Proposal: PRC-broadcast}
+
+  PRC-broadcast stands for Preventive Reliable Causal broadcast.
+  
+  \vspace{1em}
+  
+  This implementation of causal broadcast uses the causal order to improve on
+  the underlying reliable broadcast implementation.
+
+
+\end{frame}
+
+
+\begin{frame}{We define non-monotonic link memory}
 
   \begin{definition}[Link memory]
     A link from Process~A to Process~B remembers among Process~B's delivered
     messages those that will be received from Process~A; and forgets among
     Process~B's delivered messages those that will never be received from
     Process~A.\\
-    $\forall m,\, remember_{BA}(m) \equiv d_B(m) \wedge \neg r_{BA}(m)$ \\
-    $\forall m,\, remember_{BA}(m) \implies r_{BA}(m)$
+    $\forall m,\, remember_{BA}(m) \equiv d_B(m) \wedge \neg r_{BA}(m)$
   \end{definition}
 
   \vspace{2em}
@@ -190,9 +261,7 @@
   \vspace{2em}
 
   Link memory allows processes to safely remove obsolete control information
-  about past deliveries in static systems.
-  
-  The space complexity is non-monotonic.
+  about past deliveries in static systems. 
 
 \end{frame}
 
@@ -225,56 +294,8 @@
 
 \end{frame}
 
-\begin{frame}[standout]
-  
-  How do we keep a non-monotonic bound on space complexity without forfeiting on
-  dynamic systems where processes can join, leave, or self-reconfigure at any
-  time?
 
-\end{frame}
-
-
-\begin{frame}{We will use causal order}
-
-  Causal broadcast ensures a specific ordering among message deliveries.
-  
-  \begin{definition}[Lamport's Happen before]
-    Happen before is a transitive, irreflexive, and antisymmetric relation
-    $\rightarrow$ that defines a strict partial orders of events.  The sending
-    of a message always precedes its receipt.
-  \end{definition}
-
-  \vspace{2em}
-
-  \begin{definition}[Causal order]
-    The delivery order of messages follows the happen before relationships of the
-    corresponding broadcasts. $\forall A,\,B,\,C,\,
-    b_A(m) \rightarrow b_B(m') \implies d_C(m) \rightarrow d_C(m')$
-  \end{definition}
-
-  \textit{When Alice comments Bob's picture, nobody sees Alice's comment without
-    Bob's picture, and nobody sees multiple occurrences of Alice's comment or
-    Bob's picture.}
-
-\end{frame}
-
-\begin{frame}{Proposal: PRC-broadcast}
-
-  PRC-broadcast stands for Preventive Reliable Causal broadcast. 
-  
-  \vspace{2em}
-
-  By exploiting causal order, processes remove the uncertainty associated with
-  link additions. Causal order allows to remove batches of obsolete information
-  while reasoning about temporarily buffered broadcast messages.
-  
-  \vspace{1em}
-  
-  Causal broadcast improves its underlying reliable broadcast.
-
-\end{frame}
-
-\begin{frame}{Link memory initialization}
+\begin{frame}{Causal order to initialize link memory}
 
   \begin{center}
     \input{input/figtimelineproof.tex}
@@ -389,28 +410,37 @@
 
   \begin{table}
     \begin{center}
-      \caption{\scriptsize $N$ the number of processes that ever broadcast a
-        message. $P$ the number of processes in the system. $W$ the number of
-        messages received but not delivered yet. $Q_i$ is the number of incoming
-        communication means. $M$ is the number of messages already delivered
-        that should be received again from at least one process in $Q_i$.}
-      \input{input/tablecomplexity.tex}
+      \input{input/tableonelinecomplexity.tex}
     \end{center}
   \end{table}
 
-  \vspace{2em}
-  
-  Message overhead depends on routing capabilities of the underlying overlay
-  network:
-  \begin{itemize}
-  \item 6 messages in the best case
-  \item 8 messages with neighbor-to-neighbor connections
-  \item $O(4.log(P))$ with routing protocols such as DHT
-  \item $4P^2$ in the worst-case (complete graph + broadcast)
-  \end{itemize}
-  
+  TODO figure with number of incoming links and messages still transiting
+
+  Most importantly, this is not grow-only.
 
 \end{frame}
+
+\begin{frame}{Overhead depends on the overlay network}
+
+  \begin{table}
+    \begin{center}
+      \input{input/tableonelinecomplexity.tex}
+    \end{center}
+  \end{table}
+
+  \vspace{3em}
+  
+
+  \begin{center}
+    \begin{table}
+      \begin{center}
+        \input{input/tableoverhead.tex}
+      \end{center}
+    \end{table}
+  \end{center}
+
+\end{frame}
+
 
 \begin{frame}{Experiments: setup}
   
@@ -439,31 +469,45 @@
 
 
 \begin{frame}{Conclusion}
-
-  PRC-broadcast is an original implementation of causal broadcast that provides
-  an original tradeoff on complexity.
   
+  \begin{table}
+    \begin{center}
+      \input{input/tablecomplexity.tex}
+    \end{center}
+  \end{table}
+
   \vspace{2em}
 
-  Space complexity is non-monotonic and actually depends on the system
-  settings and its usage.
-
-  \vspace{1em}
-
-  Assuming light routing capabilities, message overhead remains small. It
-  constitutes an advantageous tradeoff compared to vector-based approaches that
-  continuously pay the price of past delivered messages.
-
-  \vspace{1em}
-
-  This implementation of causal broadcast even makes an efficient implementation
-  for reliable broadcast.
+  \faLightbulbO~Fun fact! This implementation of causal broadcast even makes an
+  efficient implementation for reliable broadcast.
 
 \end{frame}
+
 
 \begin{frame}[standout]
+
   To be continued\ldots Retrieving partial order out of flattened orders.
+  
+  \vspace{2em}
+  
+  \begin{center}
+    \input{input/figflattened.tex}
+  \end{center}
+  
 \end{frame}
 
+
+\begin{frame}[standout]
+
+  \vspace{6em}
+  
+  Thanks!
+
+  \vspace{5em}
+
+  \small
+  \faEnvelope ~ brice.nedelec@ls2n.fr
+
+\end{frame}
 
 \end{document}
