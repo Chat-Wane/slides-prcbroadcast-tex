@@ -204,6 +204,21 @@
   
 \end{frame}
 
+
+\begin{frame}{Possible implementations of URB}
+  
+  Constrain the system topology (e.g. ring or tree) to ensure 1 receipt hence 1
+  delivery but it does not support departures/crashes of processes.
+  
+  \vspace{2em}
+  
+  Create a structure that allows processes to identify the first receipt of a
+  message and ignore the others receipts. However, the size of such structures
+  increases linearly and monotonically with the number of processes that ever
+  broadcast a message.
+
+\end{frame}
+
 \begin{frame}[standout]
   
   How to implement an efficient causal broadcast when they rely on reliable
