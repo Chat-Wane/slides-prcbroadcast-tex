@@ -16,13 +16,17 @@
 
   \draw [->] (0*\X, 0.5*\Y) node[left]{b(\faImage)} -- (1*\X, 1.2*\Y)
   node[right]{d(\faImage)}; %% A B
-  \draw [->] (0*\X, 0.5*\Y) -- (2*\X, 2.6*\Y) 
-  node[right]{d(\faImage) \YES{\cmark}}; %% A C
+  \draw [->] (0*\X, 0.5*\Y) -- (1.5*\X, 2.6*\Y) 
+  node{\NO{\xmark}}; %% A C
+  \draw [->] (0*\X, 0.5*\Y) -- (1.5*\X, 2.95*\Y) 
+  node{\NO{\xmark}}; %% A C
+  \draw [->] (0*\X, 0.5*\Y) -- (1.5*\X, 3.3*\Y) 
+  node{\NO{\xmark}}; %% A C
   
-  \draw [->] (1*\X, 2.5*\Y) node[left]{b(\faCommentingO)} -- (2*\X, 4*\Y)
-  node[right]{d(\faCommentingO) \YES{\cmark}}; %% B C
-  \draw [->] (1*\X, 2.5*\Y) -- (0*\X, 4*\Y)
-  node[left]{d(\faCommentingO)}; %% B A
+  % \draw [->] (1*\X, 2.5*\Y) node[left]{b(\faCommentingO)} -- (2*\X, 4*\Y)
+  % node[right]{d(\faCommentingO)}; %% B C
+  % \draw [->] (1*\X, 2.5*\Y) -- (0*\X, 4*\Y)
+  % node[left]{d(\faCommentingO)}; %% B A
   
   % \draw (2*\X, 3.25*\Y) node[right]{\YES{\cmark}};
 
