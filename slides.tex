@@ -5,7 +5,10 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{upgreek,textgreek}
+
 \usepackage{animate}
+
+\usepackage{ulem}
 
 \usepackage{fontawesome}
 
@@ -207,16 +210,31 @@
 
 \begin{frame}{Possible implementations of URB}
   
-  Constrain the system topology (e.g. ring or tree) to ensure 1 receipt hence 1
-  delivery but it does not support departures/crashes of processes.
+  \begin{minipage}{0.49\textwidth}
+    \begin{center}
+      \input{input/figtimelineE.tex}
+    \end{center}
+  \end{minipage}~
+  \begin{minipage}{0.49\textwidth}
+    \begin{center}
+      \input{input/figtimelineF.tex}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \vspace{1em}
+    Constrain the system topology (e.g. ring or tree) to ensure 1 receipt hence
+    1 delivery.\\
+    Memory consumption: None \YES{\cmark}\\
+    Departures/crashes: \NO{\xmark}
+  \end{minipage}~
+  \begin{minipage}{0.49\textwidth}
+    \vspace{1em}
+    Save control information to identify the $1^{st}$ receipt of a
+    message and ignore its other receipts.\\
+    Memory consumption: $O(N)$ \NO{\xmark}\\
+    Departures/crashes: \YES{\cmark}
+  \end{minipage}
   
-  \vspace{2em}
-  
-  Create a structure that allows processes to identify the first receipt of a
-  message and ignore the others receipts. However, the size of such structures
-  increases linearly and monotonically with the number of processes that ever
-  broadcast a message.
-
 \end{frame}
 
 \begin{frame}[standout]
@@ -230,12 +248,16 @@
 \begin{frame}{Proposal: PRC-broadcast}
 
   PRC-broadcast stands for Preventive Reliable Causal broadcast.
+
+  \vspace{1em}
   
+  PRC-broadcast exploits the topology without constraining it. It maintains a
+  local data structure the size of which does not monotonically increases.
+
   \vspace{1em}
   
   This implementation of causal broadcast uses the causal order to improve on
   the underlying reliable broadcast implementation.
-
 
 \end{frame}
 
