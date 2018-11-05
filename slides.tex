@@ -191,12 +191,14 @@
 
   \begin{minipage}{0.49\textwidth} %% fails to receive a message
     %\begin{center}
-      \input{input/figtimelineC.tex}
+      \input{input/figtimelineC.tex}\\
+      \small\textit{A process must receive every message}
     %\end{center}
   \end{minipage}~~~
   \begin{minipage}{0.49\textwidth} %% multiple deliveries
     \begin{center}
       \input{input/figtimelineD.tex}
+      \small\textit{and deliver each message once}
     \end{center}
   \end{minipage}
   
@@ -242,6 +244,15 @@
   How to implement an efficient causal broadcast when they rely on reliable
   broadcast implementations that do not scale in large and dynamic systems?
   
+  \vspace{2em}
+  \large
+  (How to implement an efficient reliable broadcast in large and
+  dynamic systems?)
+
+\end{frame}
+
+\begin{frame}[standout] 
+  How to forget obsolete control information about broadcast messages?
 \end{frame}
 
 
