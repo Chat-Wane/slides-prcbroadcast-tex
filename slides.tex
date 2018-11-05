@@ -213,9 +213,9 @@
 \begin{frame}{Possible implementations of URB}
   
   \begin{minipage}{0.49\textwidth}
-    \begin{center}
+    % \begin{center}
       \input{input/figtimelineE.tex}
-    \end{center}
+      % \end{center}
   \end{minipage}~
   \begin{minipage}{0.49\textwidth}
     \begin{center}
@@ -224,15 +224,13 @@
   \end{minipage}
   \begin{minipage}{0.49\textwidth}
     \vspace{1em}
-    Constrain the system topology (e.g. ring or tree) to ensure 1 receipt hence
-    1 delivery.\\
+    Constrain the system topology.\\
     Memory consumption: None \YES{\cmark}\\
     Departures/crashes: \NO{\xmark}
   \end{minipage}~
   \begin{minipage}{0.49\textwidth}
     \vspace{1em}
-    Save control information to identify the $1^{st}$ receipt of a
-    message and ignore its other receipts.\\
+    Save control information.\\
     Memory consumption: $O(N)$ \NO{\xmark}\\
     Departures/crashes: \YES{\cmark}
   \end{minipage}
@@ -258,7 +256,7 @@
 
 \begin{frame}{Proposal: PRC-broadcast}
 
-  PRC-broadcast stands for Preventive Reliable Causal broadcast.
+  PRC-broadcast is an implementation of reliable causal broadcast.
 
   \vspace{1em}
   
@@ -279,7 +277,7 @@
     A link from Process~A to Process~B remembers among Process~B's delivered
     messages those that will be received from Process~A; and forgets among
     Process~B's delivered messages those that will never be received from
-    Process~A.\\
+    Process~A.
     $\forall m,\, remember_{BA}(m) \equiv d_B(m) \wedge \neg r_{BA}(m)$
   \end{definition}
 
@@ -296,7 +294,7 @@
 \begin{frame}{Large scale static systems: \YES{\cmark}}
   
   reliable links + forwarding + link memory = reliable broadcast\\
-  \textit{(Note for later: + FIFO links = causal broadcast)}
+  + FIFO links = causal broadcast
 
 
   \begin{minipage}{0.24\textwidth}
@@ -321,8 +319,8 @@
 
   \vspace{2em}
 
-  Link memory allows processes to safely remove obsolete control information
-  about past deliveries in static systems. 
+  All and only obsolete control information about delivered broadcast messages
+  is removed.
 
 \end{frame}
 
@@ -345,7 +343,7 @@
     \input{input/figmemorylinkfailsD.tex}
   \end{minipage}
   
-  \vspace{2em}
+  \vspace{1.5em}
 
   Adding a link adds uncertainty. Process~C does not know messages it should
   expect from Process~B. It mistakes the message $a$ for a new one.
@@ -353,6 +351,10 @@
   Not only it delivers $a$ multiple times, but this has cascading effects over
   the whole system.
 
+  \vspace{1em}
+  
+  \textbf{How do we initialize link memory?}
+  
 \end{frame}
 
 
@@ -483,13 +485,13 @@
 
 \begin{frame}{Overhead depends on the overlay network}
 
-  \begin{table}
-    \begin{center}
-      \input{input/tableonelinecomplexity.tex}
-    \end{center}
-  \end{table}
+  % \begin{table}
+  %   \begin{center}
+  %     \input{input/tableonelinecomplexity.tex}
+  %   \end{center}
+  % \end{table}
 
-  \vspace{3em}
+  % \vspace{3em}
   
 
   \begin{center}
@@ -505,27 +507,37 @@
 
 \begin{frame}{Experiments: setup}
   
-  Simulation over Peersim. Code available at \url{http://github.com/chat-wane/peersim-prcbroadcast.git}.
+  \textbf{Goal:} Show the trade-off proposed by PRC-broadcast experimentally.
 
-  Overlay network that allows neighbor-to-neighbor connections
-  establishement. Random peer-sampling protocol. Very dynamic.
+  \vspace{2em}
+
+  A random peer-sampling protocol builds the overlay network. The topology has
+  properties close to those of random graphs.
+
+  \vspace{1em}
   
-  Bidirectional links. Link memory initialized and maintained both ways.
+  The system is very dynamic. Processes periodically exchange their outgoing
+  links.
+  
+  \vspace{1em}
+  
+  Links are bidirectional. Each new bidirectional link still costs 8 control
+  messages.
     
 \end{frame}
 
-\begin{frame}{Experiments: original tradeoff in space overhead}
 
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{img/overhead.eps}
-  \end{center}
+\begin{frame}{Experiments: new complexity in local space consumed}
+
+  \hspace{-1em}\includegraphics[width=1.0\textwidth]{img/overhead.eps}
 
 \end{frame}
 
+
 \begin{frame}{Experiments: small traffic overhead}
-  \begin{center}
-    \includegraphics[width=0.8\textwidth]{img/controlmessages.eps}
-  \end{center}
+
+  \hspace{-1em}\includegraphics[width=1.0\textwidth]{img/controlmessages.eps}
+    
 \end{frame}
 
 
@@ -544,7 +556,7 @@
   \vspace{2em}
 
   \faLightbulbO~Fun fact! This implementation of causal broadcast even makes an
-  efficient implementation for reliable broadcast.
+  efficient implementation for reliable broadcast!
 
 \end{frame}
 
