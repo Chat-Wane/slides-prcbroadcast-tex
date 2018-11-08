@@ -351,12 +351,12 @@
   Not only it delivers $a$ multiple times, but this has cascading effects over
   the whole system.
 
-  \vspace{1em}
-  
-  \textbf{How do we initialize link memory?}
-  
 \end{frame}
 
+
+\begin{frame}[standout]
+  How can processes initialize link memory?
+\end{frame}
 
 \begin{frame}{Causal order to initialize link memory}
 
@@ -569,21 +569,54 @@
 \end{frame}
 
 
-\begin{frame}{Complexity}
+\begin{frame}{Complexity: a new trade-off}
 
   \begin{table}
     \begin{center}
-      \input{input/tableonelinecomplexity.tex}
+      \input{input/tableonelinecomplexityA.tex}
     \end{center}
   \end{table}
 
-  TODO figure with number of incoming links and messages still transiting
+  \vspace{1em}
 
-  Most importantly, this is not grow-only.
+  \begin{minipage}{0.48\textwidth}
+    \begin{center}
+      \input{input/figcomplexityA.tex}
+    \end{center}
+  \end{minipage}\hfill
+  \begin{minipage}{0.48\textwidth}
+    \begin{center}
+      \input{input/figcomplexityB.tex}
+    \end{center}
+  \end{minipage}
+  
+  \vspace{1em}
+  
+  We can achieve ${(|Q_i| - 1) \cdot 2\cdot N}\over{2}$ in space consumed. Where
+  ${1}\over{2}$ is a switch between ``already received'' and ``expected''
+  tags. And $2\cdot N$ is a vector of intervals instead of all messages.
+  
+  \vspace{1em}
+
+  Most importantly, this structure is \textbf{not grow-only}.
 
 \end{frame}
 
-\begin{frame}{Overhead depends on the overlay network}
+\begin{frame}{Overhead: depends on the overlay network}
+
+  \begin{table}
+    \begin{center}
+      \input{input/tableonelinecomplexityB.tex}
+    \end{center}
+  \end{table}
+  
+  \vspace{1em}
+  
+  \begin{center}
+    \input{input/figneighbor2neighbor.tex}
+  \end{center}
+
+  %\vspace{0.3em}
 
   \begin{center}
     \begin{table}
@@ -592,6 +625,12 @@
       \end{center}
     \end{table}
   \end{center}
+  
+  \vspace{1em}
+
+  Most importantly, the number of messages can be \textbf{small} and
+  \textbf{constant}.
+
 
 \end{frame}
 

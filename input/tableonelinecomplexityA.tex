@@ -1,0 +1,15 @@
+
+% \setlength{\tabcolsep}{4pt} % General space between cols (6pt standard)
+
+%\scriptsize
+
+\begin{tabularx}{0.90\columnwidth}{@{}cccc@{}}
+  \makecell{message\\overhead} &  \makecell{delivery\\execution time} & \makecell{local space\\consumption} & \makecell{\color{fg!30}{\# control messages}\\\color{fg!30}{per added link}} \\ \hline
+  $O(1)$ & $O(|Q_i|)$ & $\mathbf{O(|Q_i|\cdot M)}$ & \color{fg!30}{$\mathbf{6}$ to $\mathbf{4\cdot |P|^2}$} \\
+%  \bottomrule
+\end{tabularx}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../paper"
+%%% End:
