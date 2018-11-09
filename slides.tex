@@ -79,7 +79,7 @@
 \usetheme{metropolis}
 
 \title{Causal Broadcast: How to Forget?}
-\author{Brice N\'edelec, Pascal Molli, and Achour Most{\'e}faoui}
+\author{\textbf{Brice N\'edelec}, Pascal Molli, and Achour Most{\'e}faoui}
 \date{OPODIS'18, Hong Kong, December 17--19.}
 \institute{
   \vspace{6em}
@@ -227,16 +227,23 @@
     \end{center}
   \end{minipage}
   \begin{minipage}{0.49\textwidth}
-    \vspace{1em}
-    Constrain the system topology.\\
-    Memory consumption: None \YES{\cmark}\\
-    Departures/crashes: \NO{\xmark}
+    \vspace{1em} 
+    \begin{center}
+      \small\textit{Constraining the system topology. It does not
+        consume any space but does not handle crashes.}
+    \end{center}
+    % Memory consumption: None \YES{\cmark}\\
+    % Departures/crashes: \NO{\xmark}
   \end{minipage}~
   \begin{minipage}{0.49\textwidth}
     \vspace{1em}
-    Save control information.\\
-    Memory consumption: $O(N)$ \NO{\xmark}\\
-    Departures/crashes: \YES{\cmark}
+    \begin{center}
+      \small\textit{Saving control information about broadcast
+        messages. It handles crashes but the memory consumed is linear $O(N)$
+        and monotonically increasing.}
+    \end{center}
+    % Memory consumption: $O(N)$ \NO{\xmark}\\
+    % Departures/crashes: \YES{\cmark}
   \end{minipage}
   
 \end{frame}
