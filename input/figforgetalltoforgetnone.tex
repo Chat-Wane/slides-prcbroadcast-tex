@@ -1,0 +1,10 @@
+
+\begin{tikzpicture}
+  
+  \newcommand{\X}{150pt}
+
+  \draw[<->] (-1*\X, 0) node[above right]{forget all \YES{\cmark}} node[below right]{no \NO{\xmark}}
+  -- node[above]{\textbf{control information}} node[below]{\textbf{tolerate failures}}
+  (1*\X, 0) node[above left]{\NO{\xmark} forget none} node[below left]{\YES{\cmark} yes};
+
+\end{tikzpicture}
