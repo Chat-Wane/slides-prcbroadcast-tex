@@ -1,0 +1,19 @@
+
+\begin{tikzpicture}
+
+  \small
+
+  \newcommand\X{180/5pt};
+  \newcommand\Y{29pt};
+
+  \draw[fill=white] (0*\X, 0*\Y) node{\textbf{A}} +(-5pt, -5pt) rectangle +(5pt, 5pt);
+
+  \draw[->] (-1*\X, -1*\Y) -- (-5pt, -5pt);
+  \draw[->] (-1*\X , 0*\Y) -- node[above]{b \sout{\footnotesize{$[b]$}}} (-5pt, 0pt);
+  \draw[->, color=blue] (-1*\X,  1*\Y) -- node[above, sloped]{\NO{$b$}} (-5pt, 5pt);
+
+  \draw[<-] (1*\X, -1*\Y) -- (5pt, -5pt);
+  \draw[<-] (1*\X , 0*\Y) -- (5pt, 0pt);
+  \draw[<-] (1*\X,  1*\Y) -- (5pt, 5pt);
+  
+\end{tikzpicture}

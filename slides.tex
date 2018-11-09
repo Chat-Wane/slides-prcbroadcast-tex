@@ -107,30 +107,34 @@
   distributed social networks, distributed collaborative software, or
   distributed data stores.
 
-  \vspace{3em}
+  \vspace{2.5em}
   
-    \begin{minipage}{0.19\textwidth}
+    \begin{minipage}{0.15\textwidth}
       \centering
       \includegraphics[width=0.7\textwidth]{logos/facebook.png}
     \end{minipage}
-    \begin{minipage}{0.19\textwidth}
+    \begin{minipage}{0.15\textwidth}
       \centering
       \includegraphics[width=0.7\textwidth]{logos/mastodon.png}
     \end{minipage}
-    \begin{minipage}{0.19\textwidth}
+    \begin{minipage}{0.15\textwidth}
       \centering
       \includegraphics[width=0.7\textwidth]{logos/telegram.png}
     \end{minipage}    
-    \begin{minipage}{0.19\textwidth}
+    \begin{minipage}{0.15\textwidth}
       \centering
       \includegraphics[width=0.7\textwidth]{logos/google.png}
     \end{minipage}
-    \begin{minipage}{0.19\textwidth}
+    \begin{minipage}{0.15\textwidth}
       \centering
       \includegraphics[width=0.8\textwidth]{logos/riak.png}
     \end{minipage}
+    \begin{minipage}{0.15\textwidth}
+      \centering
+      \includegraphics[width=0.7\textwidth]{logos/wow.png}
+    \end{minipage}
 
-    \vspace{4em}  
+    \vspace{3em}  
 
     \textit{\textbf{What if\ldots} I want to develop fully decentralized
       applications?\ldots}
@@ -271,7 +275,7 @@
 \end{frame}
 
 
-\begin{frame}{We define non-monotonic link memory}
+\begin{frame}{Link memory in static systems: \YES{\cmark}}
 
   \begin{definition}[Link memory]
     A link from Process~A to Process~B remembers among Process~B's delivered
@@ -281,7 +285,56 @@
     $\forall m,\, remember_{BA}(m) \equiv d_B(m) \wedge \neg r_{BA}(m)$
   \end{definition}
 
-  \vspace{2em}
+  \vspace{1em}
+
+  \only<1>{
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figcomplexityA.tex}
+        \end{center}
+      \end{minipage}
+    \end{center}
+  }
+  \only<2>{
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figcomplexityB.tex}
+        \end{center}
+      \end{minipage}
+    \end{center}
+  }
+  \only<3>{
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figcomplexityC.tex}
+        \end{center}
+      \end{minipage}
+    \end{center}
+  }
+  \only<4>{
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figcomplexityD.tex}
+        \end{center}
+      \end{minipage}
+    \end{center}
+  }
+  \only<5>{
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figcomplexityE.tex}
+        \end{center}
+      \end{minipage}
+    \end{center}
+  }
+
+
+  \vspace{1em}
 
   \begin{theorem}[Link memory forbids multiple delivery]
     Assuming that each link conveys each message at most once, link memory is
@@ -291,65 +344,114 @@
 \end{frame}
 
 
-\begin{frame}{Large scale static systems: \YES{\cmark}}
+% \begin{frame}{Large scale static systems: \YES{\cmark}}
   
-  reliable links + forwarding + link memory = reliable broadcast\\
-  + FIFO links = causal broadcast
+%   reliable links + forwarding + link memory = reliable broadcast\\
+%   + FIFO links = causal broadcast
 
 
-  \begin{minipage}{0.24\textwidth}
-    \centering
-    \input{input/figmemorylinkA.tex}    
-  \end{minipage}
-  \begin{minipage}{0.24\textwidth}
-    \vspace{11pt}
-    \centering
-    \input{input/figmemorylinkB.tex}    
-  \end{minipage}
-  \begin{minipage}{0.24\textwidth}
-    \vspace{11pt}
-    \centering
-    \input{input/figmemorylinkC.tex}    
-  \end{minipage}
-  \begin{minipage}{0.24\textwidth}
-    \vspace{1pt}
-    \centering
-    \input{input/figmemorylinkD.tex}
-  \end{minipage}
+%   \begin{minipage}{0.24\textwidth}
+%     \centering
+%     \input{input/figmemorylinkA.tex}    
+%   \end{minipage}
+%   \begin{minipage}{0.24\textwidth}
+%     \vspace{11pt}
+%     \centering
+%     \input{input/figmemorylinkB.tex}    
+%   \end{minipage}
+%   \begin{minipage}{0.24\textwidth}
+%     \vspace{11pt}
+%     \centering
+%     \input{input/figmemorylinkC.tex}    
+%   \end{minipage}
+%   \begin{minipage}{0.24\textwidth}
+%     \vspace{1pt}
+%     \centering
+%     \input{input/figmemorylinkD.tex}
+%   \end{minipage}
 
-  \vspace{2em}
+%   \vspace{2em}
 
-  All and only obsolete control information about delivered broadcast messages
-  is removed.
+%   All and only obsolete control information about delivered broadcast messages
+%   is removed.
 
-\end{frame}
+% \end{frame}
 
-\begin{frame}{Dynamic systems: \NO{\xmark}}
+\begin{frame}{Link memory in dynamic systems: \NO{\xmark}}
   
-  \begin{minipage}{0.24\textwidth}
-    \centering
-    \input{input/figmemorylinkfailsA.tex}    
-  \end{minipage}
-  \begin{minipage}{0.24\textwidth}
-    \centering
-    \input{input/figmemorylinkfailsB.tex}    
-  \end{minipage}
-  \begin{minipage}{0.24\textwidth}
-    \centering
-    \input{input/figmemorylinkfailsC.tex}    
-  \end{minipage}
-  \begin{minipage}{0.24\textwidth}
-    \centering
-    \input{input/figmemorylinkfailsD.tex}
-  \end{minipage}
+  \only<1>{
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figfailsA.tex}
+        \end{center}
+      \end{minipage}
+    \end{center}   
+  }
+  \only<2>{
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figfailsB.tex}
+        \end{center}
+      \end{minipage}
+    \end{center}   
+  }
+  \only<3->{
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figfailsC.tex}\\
+          \small\textit{should I expect $b$ from the new link?}
+        \end{center}
+      \end{minipage}
+    \end{center}   
+  }
+  \only<4->{
+    \ \\
+    \begin{center}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figfailsD.tex}\\
+          \small\textit{infinitely increasing memory consumption}
+        \end{center}
+      \end{minipage}
+      \begin{minipage}{0.48\textwidth}
+        \begin{center}
+          \input{input/figfailsE.tex}\\
+          \small\textit{Multiple delivery and cascading effect over the whole system}
+        \end{center}
+      \end{minipage}
+    \end{center}
+  }
   
-  \vspace{1.5em}
 
-  Adding a link adds uncertainty. Process~C does not know messages it should
-  expect from Process~B. It mistakes the message $a$ for a new one.
 
-  Not only it delivers $a$ multiple times, but this has cascading effects over
-  the whole system.
+
+  % \begin{minipage}{0.24\textwidth}
+  %   \centering
+  %   \input{input/figmemorylinkfailsA.tex}    
+  % \end{minipage}
+  % \begin{minipage}{0.24\textwidth}
+  %   \centering
+  %   \input{input/figmemorylinkfailsB.tex}    
+  % \end{minipage}
+  % \begin{minipage}{0.24\textwidth}
+  %   \centering
+  %   \input{input/figmemorylinkfailsC.tex}    
+  % \end{minipage}
+  % \begin{minipage}{0.24\textwidth}
+  %   \centering
+  %   \input{input/figmemorylinkfailsD.tex}
+  % \end{minipage}
+  
+  % \vspace{1.5em}
+
+  % Adding a link adds uncertainty. Process~C does not know messages it should
+  % expect from Process~B. It mistakes the message $a$ for a new one.
+
+  % Not only it delivers $a$ multiple times, but this has cascading effects over
+  % the whole system.
 
 \end{frame}
 
@@ -358,7 +460,7 @@
   How can processes initialize link memory?
 \end{frame}
 
-\begin{frame}{Causal order to initialize link memory}
+\begin{frame}{Order to the help of link memory initialization}
 
   \begin{center}
     \input{input/figtimelineproof.tex}
