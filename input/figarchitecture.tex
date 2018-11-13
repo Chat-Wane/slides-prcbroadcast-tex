@@ -1,0 +1,27 @@
+
+
+\begin{tikzpicture}[scale=0.65]
+  
+  \small
+
+  \newcommand{\X}{50pt};
+  \newcommand{\Y}{50pt};
+
+  
+  \draw (0*\X, 1*\Y) node{application} +(-1*\X, -10pt) rectangle +(\X, 10pt);
+  
+  \draw[->] (-0.5*\X, -10 + 1*\Y) -- (-0.5*\X, 10pt);
+  \draw[<-] (0.5*\X, -10 + 1*\Y) -- (0.5*\X, 10pt);
+
+  \draw (0*\X, 0*\Y) node{causal order} +(-1*\X, -10pt) rectangle +(\X, 10pt);
+
+  \draw[->] (-0.5*\X, -10 + 0*\Y) -- (-0.5*\X, 10 - 1*\Y);
+  \draw[<-] (0.5*\X, -10 + 0*\Y) -- (0.5*\X, 10 - 1*\Y);
+
+  \draw (0*\X, -1*\Y) node{reliable} +(-1*\X, -10pt) rectangle +(\X, 10pt);
+
+  \draw[->, dashed] (-0.5*\X, -10 - 1*\Y) -- (-0.5*\X, 10 - 2*\Y);
+  \draw[<-, dashed] (0.5*\X, -10 - 1*\Y) -- (0.5*\X, 10 - 2*\Y);
+
+
+\end{tikzpicture}

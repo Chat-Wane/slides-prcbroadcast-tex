@@ -254,13 +254,20 @@
 
 \begin{frame}[standout]
   
+  \vspace{1em}
+
   How to implement an efficient causal broadcast when they rely on reliable
   broadcast implementations that do not scale in large and dynamic systems?
+    
+  \vspace{1em}
+
+  \begin{center}
+    \input{input/figarchitecture.tex}
+  \end{center}
   
-  \vspace{2em}
-  \large
-  (How to implement an efficient reliable broadcast in large and
-  dynamic systems?)
+  % \large
+  % (How to implement an efficient reliable broadcast in large and
+  % dynamic systems?)
 
 \end{frame}
 
@@ -282,6 +289,10 @@
   
   This implementation of causal broadcast uses the causal order to improve on
   the underlying reliable broadcast implementation.
+  
+  \begin{center}
+    \input{input/figarchitectureB.tex}
+  \end{center}
 
 \end{frame}
 
@@ -394,7 +405,8 @@
     \begin{center}
       \begin{minipage}{0.48\textwidth}
         \begin{center}
-          \input{input/figfailsA.tex}
+          \input{input/figfailsA.tex}\\
+          \phantom{\small\textbf{\textit{should I expect $b$ from the new link?}}}
         \end{center}
       \end{minipage}
     \end{center}   
@@ -403,7 +415,8 @@
     \begin{center}
       \begin{minipage}{0.48\textwidth}
         \begin{center}
-          \input{input/figfailsB.tex}
+          \input{input/figfailsB.tex}\\
+          \phantom{\small\textbf{\textit{should I expect $b$ from the new link?}}}
         \end{center}
       \end{minipage}
     \end{center}   
