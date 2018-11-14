@@ -789,15 +789,43 @@
 
 
 \begin{frame}{Experiments: new complexity in local space consumed}
+  
+  \hspace{-1em}
+  
+  \begin{tikzpicture}{overlay}
+    \draw (0,0) node[inner sep=0]{\includegraphics[width=1.0\textwidth]{img/overhead.eps}};
+    \only<2-3> {\draw[<->, thick, color=red] (3.7, 1.7) -- (3.7, 1.4);};
+    \only<2-3> {\draw[<->, thick, color=red] (3.7, 1.35) node[right]{$Q_i$} -- (3.7, 0.5);};
+    
+    \only<3> {\draw[->, thick, color=red] (-1.7, -1.5) -- node[above, sloped]{M} (2.0, 1.6)};
+    \only<3> {\draw[->, thick, color=red] (-1.7, -2.85) -- (2.0, -1.7)};
 
-  \hspace{-1em}\includegraphics[width=1.0\textwidth]{img/overhead.eps}
+    \only<4-> {\draw[thick, color=red] (-1.1, -2.85) -- (-1.1, -1.2)};
+    \only<4-> {\draw[thick, color=red] (-3.7, -1.2) -- (-1.1, -1.2)};
+
+    \only<5-> {\draw[thick, color=red] (-0.6, -2.85) -- (-0.6, -0.95)};
+    \only<5-> {\draw[thick, color=red] (-3.7, -0.95) -- (-0.6, -0.95)};
+    
+    \only<6-> {\draw[<->, thick, color= red] (3.5, -1.3) -- (4.9, -1.3)};
+  \end{tikzpicture}
 
 \end{frame}
 
 
 \begin{frame}{Experiments: small traffic overhead}
 
-  \hspace{-1em}\includegraphics[width=1.0\textwidth]{img/controlmessages.eps}
+  \hspace{-1em}
+
+  \begin{tikzpicture}{overlay}
+    \draw(0,0) node[inner sep=0]{\includegraphics[width=1.0\textwidth]{img/controlmessages.eps}};
+
+    \only<2> {\draw[->, thick, color=red] (-2.9, -0.7) -- (3.4, -0.7)};
+    
+    \only<3> {\draw[->, thick, color=red] (-1.7, -0.1) -- (2.0, -0.5)};
+    \only<3> {\draw[->, thick, color=red] (-1.7, -2.85) -- (2.0, -1.7)};
+    
+    \only<4> {\draw[<->, thick, color= red] (3.5, -1.3) -- (4.9, -1.3)};
+  \end{tikzpicture}
     
 \end{frame}
 
