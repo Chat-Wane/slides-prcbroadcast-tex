@@ -32,10 +32,10 @@
   % node[above left]{$\mathcal{B}$};
 
   \draw[decorate,decoration={brace,amplitude=6pt,raise=4pt}] (4*\X,
-  5+\YA) -- node[anchor=south, yshift=10pt]{$B_{A\beta} \bm{= B_{A\alpha}}$}
+  5+\YA) -- node[anchor=south, yshift=10pt]{$B_{A\beta} \BB{\bm{= B_{A\alpha}}}$}
   (6*\X, 5+\YA);
 
-  \draw[decorate,thick,decoration={brace,amplitude=6pt,raise=4pt}] (6*\X,
+  \draw[color=blue, decorate,thick,decoration={brace,amplitude=6pt,raise=4pt}] (6*\X,
   5+\YA) -- node[anchor=south, yshift=10pt]{$\bm{B_{A\pi}}$}
   (8*\X, 5+\YA);
   
@@ -46,7 +46,7 @@
   % node[below left]{$\mathcal{C}$};
 
   \draw[decorate,decoration={brace,amplitude=6pt,mirror,raise=4pt}] (5*\X,
-  -5+\YB) -- node[anchor=north, yshift=-10pt]{$B_{B\pi} \bm{= B_{B\beta}}$}
+  -5+\YB) -- node[anchor=north, yshift=-10pt]{$B_{B\pi} \BB{\bm{= B_{B\beta}}}$}
   (7*\X, -5+\YB);
 
 
@@ -59,7 +59,7 @@
 
   \draw[->] ( 6*\X, \YA ) -- node[sloped, above]{$B_{A\beta}$} (7*\X, \YB);
 
-  \draw[->, very thick] ( 7*\X, \YB ) --
+  \draw[->, very thick, color=blue] ( 7*\X, \YB ) --
   node[sloped, below]{$\bm{B_{B\beta}}$} (8*\X, \YA);
 
 %  node[below left]{$\mathcal{E}$};

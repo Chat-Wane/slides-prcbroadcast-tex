@@ -31,12 +31,12 @@
   -- node[below]{$\varnothing$}
   (4*\X, \YA + 1* \YSPACE);
   
-  \draw[opacity=0.3,densely dashed,->] ( 4*\X, \YA )
+  \draw[color=fg!30,densely dashed,->] ( 4*\X, \YA )
   -- (5*\X, \YB);
   \draw[densely dashed,->] ( 4*\X, \YA )
   -- node[sloped, above]{$\pi$} (4.7*\X, 0.7*\YB);
 
-  \draw[opacity=0.3, <->,very thick, color=green!80!black!80] (3*\X, \YB - 1*\YSPACE) --
+  \draw[<->,very thick, color=green!30] (3*\X, \YB - 1*\YSPACE) --
   node[below]{$\bm{B_\alpha}$}
   (5*\X, \YB - 1*\YSPACE);
   \draw[<->,very thick, color=green!80!black!80] (3*\X, \YB - 1*\YSPACE) --
@@ -44,22 +44,22 @@
   (4.7*\X, \YB - 1*\YSPACE);
   
 
-  \draw[opacity=0.3, densely dashed,->] ( 5*\X, \YB ) 
+  \draw[color=fg!30, densely dashed,->] ( 5*\X, \YB ) 
   -- node[sloped, above]{$\rho$} (6*\X, \YA);
 
+  \draw[<->,very thick, color=blue!20] (4*\X, \YA +1*\YSPACE)
+  -- node[above]{$\bm{B_\beta}$}
+  (6*\X, \YA + 1*\YSPACE);
   \draw[<->,very thick, color=blue!80!black!80] (4*\X, \YA +1*\YSPACE)
   -- node[below]{$c_1, b_1$}
   (4.7*\X, \YA + 1*\YSPACE);
-  \draw[opacity=0.3, <->,very thick, color=blue!80!black!80] (4*\X, \YA +1*\YSPACE)
-  -- node[above]{$\bm{B_\beta}$}
-  (6*\X, \YA + 1*\YSPACE);
 
 
-  \draw[opacity=0.3, ->, very thick, color=yellow!90!black!100] ( 6*\X, \YA )
+  \draw[->, very thick, color=yellow!30] ( 6*\X, \YA )
   -- node[sloped, above]{$\bm{B_\beta}$} (7*\X, \YB);
 
   
-  \draw[opacity=0.3, <->,very thick, color=purple!80!black!80] (5*\X, \YB - 1*\YSPACE )
+  \draw[<->,very thick, color=purple!20] (5*\X, \YB - 1*\YSPACE )
   -- node[below]{$\bm{B_\pi}$}
   node[above]{$\mathcal{A}_3' \cup \mathcal{B}_3$ with
     $\mathcal{A}_3' \subseteq \mathcal{A}_3$} 
@@ -67,7 +67,3 @@
 
 \end{tikzpicture}
 
-%%% Local Variables:
-%%% mode: latex
-%%% TeX-master: "../paper"
-%%% End:
