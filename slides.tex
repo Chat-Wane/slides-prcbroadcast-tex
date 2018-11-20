@@ -494,60 +494,20 @@
 
 \begin{frame}[standout]
 
+  \vspace{2em}
+  
   How can processes initialize link memory?
-
-\end{frame}
-
-\begin{frame}{Order to the help of link memory initialization}
-
+  
+  \vspace{1.5em}
+  
   \begin{center}
-    \input{input/figtimelineproof.tex}
+    \input{input/figfailsF.tex}
   \end{center}
 
-  \vspace{-1em}
-
-  \begin{minipage}{0.325\textwidth}
-    \setbeamercolor{block title}{use=structure,fg=black,bg=green!20}
-    \setbeamercolor{block body}{use=structure,fg=black,bg=green!10}
-    \begin{block}{Lemma (Buffer $B_\alpha$)}
-      $B_\alpha$ contains $\mathcal{A}_2$ and $\mathcal{B}_2$.
-    \end{block}
-  \end{minipage}
-  \begin{minipage}{0.325\textwidth}
-    \setbeamercolor{block title}{use=structure,fg=black,bg=blue!20}
-    \setbeamercolor{block body}{use=structure,fg=black,bg=blue!10}
-    \begin{block}{Lemma (Buffer $B_\beta$)}
-      $B_\beta$ contains $\mathcal{B}_2$ and $\mathcal{A}_3$.
-    \end{block}
-  \end{minipage}
-  \begin{minipage}{0.325\textwidth}
-    \setbeamercolor{block title}{use=structure,fg=black,bg=purple!20}
-    \setbeamercolor{block body}{use=structure,fg=black,bg=purple!10}
-    \begin{block}{Lemma (Buffer $B_\pi$)}
-      $B_\pi$ contains $\mathcal{A'}_3$ and $\mathcal{B}_3$ with 
-      $\mathcal{A}'_3 \subseteq \mathcal{A}_3$.
-    \end{block}
-  \end{minipage}
-  
-  \setbeamercolor{block title}{use=structure,fg=black,bg=yellow!20}
-  \setbeamercolor{block body}{use=structure,fg=black,bg=yellow!10}
-  \begin{block}{Lemma $B_\alpha$, $B_\beta$, $B_\pi$ initialize link memory}
-    The memory of a new link becomes correct at receipt of $B_\beta$. \\
-    To deliver:
-    $B_\beta \setminus B_\alpha \setminus B_\pi = (\mathcal{B}_2 \cup
-    \mathcal{A}_3) \setminus (\mathcal{A}_2 \cup \mathcal{B}_2) \setminus
-    (\mathcal{A}_3' \cup \mathcal{B}_3) = \mathcal{A}_3 \setminus
-    \mathcal{A}_3'$\\
-    To expect:
-    $B_\pi \setminus B_\beta = (\mathcal{A}_3' \cup \mathcal{B}_3) \setminus
-    (\mathcal{B}_2 \cup \mathcal{A}_3) = \mathcal{B}_3$
-
-  \end{block}   
-    
 \end{frame}
 
 
-\begin{frame}{Implementation}
+\begin{frame}{Example}
 
   \only<1>{
     \begin{center}
@@ -645,6 +605,67 @@
 
 \end{frame}
 
+\begin{frame}{Disambiguation: to deliver, to expect, to ignore}
+  
+  \begin{adjustwidth}{-1.5em}{-1.5em}
+    \begin{center}
+    \input{input/figsolveK.tex}
+    \end{center}
+
+    \input{input/figsolveJ.tex}
+  \end{adjustwidth}
+
+\end{frame}
+
+
+\begin{frame}{Order to the help of link memory initialization}
+
+  \begin{center}
+    \input{input/figtimelineproof.tex}
+  \end{center}
+
+  \vspace{-1em}
+
+  \begin{minipage}{0.325\textwidth}
+    \setbeamercolor{block title}{use=structure,fg=black,bg=green!20}
+    \setbeamercolor{block body}{use=structure,fg=black,bg=green!10}
+    \begin{block}{Lemma (Buffer $B_\alpha$)}
+      $B_\alpha$ contains $\mathcal{A}_2$ and $\mathcal{B}_2$.
+    \end{block}
+  \end{minipage}
+  \begin{minipage}{0.325\textwidth}
+    \setbeamercolor{block title}{use=structure,fg=black,bg=blue!20}
+    \setbeamercolor{block body}{use=structure,fg=black,bg=blue!10}
+    \begin{block}{Lemma (Buffer $B_\beta$)}
+      $B_\beta$ contains $\mathcal{B}_2$ and $\mathcal{A}_3$.
+    \end{block}
+  \end{minipage}
+  \begin{minipage}{0.325\textwidth}
+    \setbeamercolor{block title}{use=structure,fg=black,bg=purple!20}
+    \setbeamercolor{block body}{use=structure,fg=black,bg=purple!10}
+    \begin{block}{Lemma (Buffer $B_\pi$)}
+      $B_\pi$ contains $\mathcal{A'}_3$ and $\mathcal{B}_3$ with 
+      $\mathcal{A}'_3 \subseteq \mathcal{A}_3$.
+    \end{block}
+  \end{minipage}
+  
+  \setbeamercolor{block title}{use=structure,fg=black,bg=yellow!20}
+  \setbeamercolor{block body}{use=structure,fg=black,bg=yellow!10}
+  \begin{block}{Lemma $B_\alpha$, $B_\beta$, $B_\pi$ initialize link memory}
+    The memory of a new link becomes correct at receipt of $B_\beta$. \\
+    To deliver:
+    $B_\beta \setminus B_\alpha \setminus B_\pi = (\mathcal{B}_2 \cup
+    \mathcal{A}_3) \setminus (\mathcal{A}_2 \cup \mathcal{B}_2) \setminus
+    (\mathcal{A}_3' \cup \mathcal{B}_3) = \mathcal{A}_3 \setminus
+    \mathcal{A}_3'$\\
+    To expect:
+    $B_\pi \setminus B_\beta = (\mathcal{A}_3' \cup \mathcal{B}_3) \setminus
+    (\mathcal{B}_2 \cup \mathcal{A}_3) = \mathcal{B}_3$
+
+  \end{block}   
+    
+\end{frame}
+
 
 % \begin{frame}{Control messages with causal order implement link memory}
   
@@ -693,21 +714,6 @@
 %   \end{adjustwidth}
 
 % \end{frame}
-
-\begin{frame}{Disambiguation: to deliver, to expect, to ignore}
-  
-  \begin{adjustwidth}{-1.5em}{-1.5em}
-    \begin{center}
-    \input{input/figsolveI.tex}
-    \end{center}
-
-    % \vspace{em}
-
-    \input{input/figsolveJ.tex}
-  \end{adjustwidth}
-
-\end{frame}
-
 
 \begin{frame}{Complexity: a new trade-off}
 
