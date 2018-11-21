@@ -630,22 +630,22 @@
     \setbeamercolor{block title}{use=structure,fg=black,bg=green!20}
     \setbeamercolor{block body}{use=structure,fg=black,bg=green!10}
     \begin{block}{Lemma (Buffer $B_\alpha$)}
-      $B_\alpha$ contains $\mathcal{A}_2$ and $\mathcal{B}_2$.
+      $B_\alpha$ contains $\mathcal{B}_2$ and $\mathcal{C}_2$.
     \end{block}
   \end{minipage}
   \begin{minipage}{0.325\textwidth}
     \setbeamercolor{block title}{use=structure,fg=black,bg=blue!20}
     \setbeamercolor{block body}{use=structure,fg=black,bg=blue!10}
     \begin{block}{Lemma (Buffer $B_\beta$)}
-      $B_\beta$ contains $\mathcal{B}_2$ and $\mathcal{A}_3$.
+      $B_\beta$ contains $\mathcal{C}_2$ and $\mathcal{B}_3$.
     \end{block}
   \end{minipage}
   \begin{minipage}{0.325\textwidth}
     \setbeamercolor{block title}{use=structure,fg=black,bg=purple!20}
     \setbeamercolor{block body}{use=structure,fg=black,bg=purple!10}
     \begin{block}{Lemma (Buffer $B_\pi$)}
-      $B_\pi$ contains $\mathcal{A'}_3$ and $\mathcal{B}_3$ with 
-      $\mathcal{A}'_3 \subseteq \mathcal{A}_3$.
+      $B_\pi$ contains $\mathcal{B'}_3$ and $\mathcal{C}_3$ with 
+      $\mathcal{B}'_3 \subseteq \mathcal{B}_3$.
     \end{block}
   \end{minipage}
   
@@ -654,13 +654,13 @@
   \begin{block}{Lemma $B_\alpha$, $B_\beta$, $B_\pi$ initialize link memory}
     The memory of a new link becomes correct at receipt of $B_\beta$. \\
     To deliver:
-    $B_\beta \setminus B_\alpha \setminus B_\pi = (\mathcal{B}_2 \cup
-    \mathcal{A}_3) \setminus (\mathcal{A}_2 \cup \mathcal{B}_2) \setminus
-    (\mathcal{A}_3' \cup \mathcal{B}_3) = \mathcal{A}_3 \setminus
-    \mathcal{A}_3'$\\
+    $B_\beta \setminus B_\alpha \setminus B_\pi = (\mathcal{C}_2 \cup
+    \mathcal{B}_3) \setminus (\mathcal{B}_2 \cup \mathcal{C}_2) \setminus
+    (\mathcal{B}_3' \cup \mathcal{C}_3) = \mathcal{B}_3 \setminus
+    \mathcal{B}_3'$\\
     To expect:
-    $B_\pi \setminus B_\beta = (\mathcal{A}_3' \cup \mathcal{B}_3) \setminus
-    (\mathcal{B}_2 \cup \mathcal{A}_3) = \mathcal{B}_3$
+    $B_\pi \setminus B_\beta = (\mathcal{B}_3' \cup \mathcal{C}_3) \setminus
+    (\mathcal{C}_2 \cup \mathcal{B}_3) = \mathcal{C}_3$
 
   \end{block}   
     
