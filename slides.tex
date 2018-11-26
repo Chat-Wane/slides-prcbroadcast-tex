@@ -137,8 +137,7 @@
     \vspace{3em}  
 
     \textit{\textbf{What if\ldots} I want to develop fully decentralized
-      applications?\ldots}
-
+      applications?}
 \end{frame}
 
 
@@ -214,62 +213,62 @@
 \end{frame}
 
 
-\begin{frame}{Possible implementations of URB}
+% \begin{frame}{Possible implementations of URB}
   
-  \begin{minipage}{0.49\textwidth}
-    % \begin{center}
-      \input{input/figtimelineE.tex}
-      % \end{center}
-  \end{minipage}~
-  \begin{minipage}{0.49\textwidth}
-    \begin{center}
-      \input{input/figtimelineF.tex}
-    \end{center}
-  \end{minipage}
-  \begin{minipage}{0.49\textwidth}
-    \vspace{1em} 
-    \begin{center}
-      \small\textit{Constraining the system topology. It does not
-        consume any space but does not handle crashes.}
-    \end{center}
-    % Memory consumption: None \YES{\cmark}\\
-    % Departures/crashes: \NO{\xmark}
-  \end{minipage}~
-  \begin{minipage}{0.49\textwidth}
-    \vspace{1em}
-    \begin{center}
-      \small\textit{Saving control information about broadcast
-        messages. It handles crashes but the memory consumed is linear $O(N)$
-        and monotonically increasing.}
-    \end{center}
-    % Memory consumption: $O(N)$ \NO{\xmark}\\
-    % Departures/crashes: \YES{\cmark}
-  \end{minipage}
+%   \begin{minipage}{0.49\textwidth}
+%     % \begin{center}
+%       \input{input/figtimelineE.tex}
+%       % \end{center}
+%   \end{minipage}~
+%   \begin{minipage}{0.49\textwidth}
+%     \begin{center}
+%       \input{input/figtimelineF.tex}
+%     \end{center}
+%   \end{minipage}
+%   \begin{minipage}{0.49\textwidth}
+%     \vspace{1em} 
+%     \begin{center}
+%       \small\textit{Constraining the system topology. It does not
+%         consume any space but does not handle crashes.}
+%     \end{center}
+%     % Memory consumption: None \YES{\cmark}\\
+%     % Departures/crashes: \NO{\xmark}
+%   \end{minipage}~
+%   \begin{minipage}{0.49\textwidth}
+%     \vspace{1em}
+%     \begin{center}
+%       \small\textit{Saving control information about broadcast
+%         messages. It handles crashes but the memory consumed is linear $O(N)$
+%         and monotonically increasing.}
+%     \end{center}
+%     % Memory consumption: $O(N)$ \NO{\xmark}\\
+%     % Departures/crashes: \YES{\cmark}
+%   \end{minipage}
 
-  \begin{center}
-    \input{input/figforgetalltoforgetnone.tex}
-  \end{center}
+%   \begin{center}
+%     \input{input/figforgetalltoforgetnone.tex}
+%   \end{center}
   
-\end{frame}
+% \end{frame}
 
-\begin{frame}[standout]
+% \begin{frame}[standout]
   
-  \vspace{1em}
+%   \vspace{1em}
 
-  How to implement an efficient causal broadcast when they rely on reliable
-  broadcast implementations that do not scale in large and dynamic systems?
+%   How to implement an efficient causal broadcast when they rely on reliable
+%   broadcast implementations that do not scale in large and dynamic systems?
     
-  \vspace{1em}
+%   \vspace{1em}
 
-  \begin{center}
-    \input{input/figarchitecture.tex}
-  \end{center}
+%   \begin{center}
+%     \input{input/figarchitecture.tex}
+%   \end{center}
   
-  % \large
-  % (How to implement an efficient reliable broadcast in large and
-  % dynamic systems?)
+%   % \large
+%   % (How to implement an efficient reliable broadcast in large and
+%   % dynamic systems?)
 
-\end{frame}
+% \end{frame}
 
 \begin{frame}[standout] 
 
@@ -288,23 +287,30 @@
 
 \begin{frame}{Proposal: PRC-broadcast}
 
-  \vspace{2em}
-
-  PRC-broadcast is an implementation of reliable causal broadcast.
-
   \vspace{1em}
   
   PRC-broadcast exploits the topology without constraining it. It maintains a
   local data structure the size of which does not monotonically increases.
 
-  \vspace{1em}
+  \vspace{1.5em}
   
   This implementation of causal broadcast uses the causal order to improve on
   the underlying reliable broadcast implementation.
+
+  \vspace{0.5em}
   
-  \begin{center}
-    \input{input/figarchitectureB.tex}
-  \end{center}
+  \begin{minipage}{0.49\textwidth}
+    \begin{center}
+      \input{input/figarchitecture.tex}\\
+      \small\textit{before}
+    \end{center}
+  \end{minipage}
+  \begin{minipage}{0.49\textwidth}
+    \begin{center}
+      \input{input/figarchitectureB.tex}\\
+      \small\textit{now}
+    \end{center}
+  \end{minipage}
 
 \end{frame}
 
@@ -507,7 +513,7 @@
 \end{frame}
 
 
-\begin{frame}{Example}
+\begin{frame}{Example of link memory initialization \hfill\small{(using FIFO links)}}
 
   \only<1>{
     \begin{center}
